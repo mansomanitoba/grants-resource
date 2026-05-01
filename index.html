@@ -6,7 +6,7 @@
 <title>MANSO Grants Directory</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800&display=swap');
-:root{color-scheme:light;--mp:#5C2191;--mpd:#45186F;--mpl:#F0E8F9;--mpm:#9055C5;--mb:#4DBDDE;--mbd:#2C9DC0;--mbl:#E5F6FC;--mo:#F5A800;--mol:#FEF4E0;--mg:#6D6E71;--mgl:#F4F5F7;--brd:#E0E2EA;--txt:#2B2B2E;--sub:#6D6E71;--shd:0 1px 4px rgba(92,33,145,.09);--shh:0 4px 18px rgba(92,33,145,.18)}
+:root{color-scheme:light;--mp:#5C2191;--mpd:#45186F;--mpl:#F0E8F9;--mb:#4DBDDE;--mbd:#2C9DC0;--mbl:#E5F6FC;--mo:#F5A800;--mol:#FEF4E0;--mg:#6D6E71;--mgl:#F4F5F7;--brd:#E0E2EA;--txt:#2B2B2E;--sub:#6D6E71;--shd:0 1px 4px rgba(92,33,145,.09);--shh:0 4px 18px rgba(92,33,145,.18)}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"Maven Pro","Nunito","Segoe UI",system-ui,sans-serif;background:var(--mgl);color:var(--txt);font-size:13px;-webkit-font-smoothing:antialiased}
 #err{background:#FEF2F2;color:#B91C1C;padding:12px 16px;border-left:4px solid #EF4444;border-radius:8px;margin:12px;display:none;font-size:12px}
@@ -14,10 +14,11 @@ body{font-family:"Maven Pro","Nunito","Segoe UI",system-ui,sans-serif;background
 .hdr{background:#fff;padding:12px 16px 0;position:sticky;top:0;z-index:50;box-shadow:0 1px 0 var(--brd),0 2px 8px rgba(0,0,0,.06)}
 .hdr::after{content:"";display:block;height:3px;background:linear-gradient(90deg,var(--mp) 0%,var(--mb) 55%,var(--mo) 100%)}
 .hdr-top{display:flex;align-items:center;gap:10px;padding-bottom:10px}
-.hdr-brand{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
-.hdr-wm{min-width:0}
-.hdr-name{font-size:16px;font-weight:800;letter-spacing:-.3px;background:linear-gradient(120deg,var(--mp) 0%,var(--mb) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1}
-.hdr-tag{font-size:10px;color:var(--sub);font-weight:500;margin-top:1px}
+.hdr-brand{flex:1;min-width:0}
+.hdr-name{font-size:18px;font-weight:800;letter-spacing:-.4px;line-height:1.1}
+.hdr-name span.m{color:var(--mp)}
+.hdr-name span.g{color:var(--mb)}
+.hdr-tag{font-size:10px;color:var(--sub);font-weight:500;margin-top:2px;letter-spacing:.1px}
 .hdr-btns{display:flex;gap:6px;flex-shrink:0}
 a.hbtn,button.hbtn{padding:7px 13px;border-radius:8px;border:none;cursor:pointer;font-size:11.5px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-family:inherit;transition:all .18s;line-height:1}
 .hbtn-p{background:var(--mp);color:#fff}
@@ -25,8 +26,6 @@ a.hbtn,button.hbtn{padding:7px 13px;border-radius:8px;border:none;cursor:pointer
 .hbtn-s{background:rgba(92,33,145,.09);color:var(--mp);border:1.5px solid rgba(92,33,145,.2)}
 .hbtn-s:hover{background:var(--mpl);border-color:var(--mp)}
 .hbtn-s:disabled{opacity:.4;cursor:not-allowed}
-.hbtn-g{background:#22C55E;color:#fff}
-.hbtn-g:hover{background:#16A34A}
 .srch{padding-bottom:10px;position:relative}
 .srch input{width:100%;padding:9px 36px;border-radius:9px;border:1.5px solid var(--brd);background:var(--mgl);font-size:13px;font-family:inherit;outline:none;transition:all .2s;color:var(--txt)}
 .srch input:focus{border-color:var(--mp);background:#fff;box-shadow:0 0 0 3px var(--mpl)}
@@ -37,9 +36,9 @@ a.hbtn,button.hbtn{padding:7px 13px;border-radius:8px;border:none;cursor:pointer
 /* Guide panel */
 .guide{background:linear-gradient(135deg,var(--mpl) 0%,var(--mbl) 100%);border-bottom:1px solid var(--brd);overflow:hidden;transition:max-height .35s ease}
 .guide.hidden{max-height:0}
-.guide.open{max-height:500px}
+.guide.open{max-height:600px}
 .guide-inner{padding:14px 16px}
-.guide-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.guide-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
 .guide-title{font-size:13px;font-weight:800;color:var(--mp)}
 .guide-close{background:none;border:none;cursor:pointer;color:var(--mp);font-size:18px;line-height:1;padding:0;font-family:inherit;opacity:.6}
 .guide-close:hover{opacity:1}
@@ -120,7 +119,7 @@ select.fsel:focus{border-color:var(--mp)}
 .empty-s{font-size:12px;color:#AAA;margin-top:5px}
 .empty-btn{display:inline-flex;align-items:center;gap:5px;margin-top:16px;padding:8px 18px;background:var(--mpl);color:var(--mp);border-radius:8px;border:1.5px solid rgba(92,33,145,.2);cursor:pointer;font-size:12px;font-weight:700;font-family:inherit}
 .empty-btn:hover{background:var(--mp);color:#fff}
-/* Suggest modal */
+/* Modal */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
 .modal-bg.on{display:flex}
 .modal{background:#fff;border-radius:14px;width:100%;max-width:480px;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;max-height:90vh;overflow-y:auto}
@@ -140,7 +139,7 @@ select.fsel:focus{border-color:var(--mp)}
 .btn-submit:hover{background:var(--mpd)}
 .btn-cancel{padding:9px 20px;border-radius:8px;background:#F3F4F6;color:var(--mg);border:none;cursor:pointer;font-size:13px;font-weight:700;font-family:inherit}
 .btn-cancel:hover{background:var(--brd)}
-/* Suggest FAB */
+/* FAB */
 .fab{position:fixed;bottom:20px;right:16px;background:var(--mp);color:#fff;border:none;border-radius:50px;padding:10px 16px;font-size:12px;font-weight:700;cursor:pointer;box-shadow:0 4px 16px rgba(92,33,145,.4);display:flex;align-items:center;gap:6px;font-family:inherit;transition:all .2s;z-index:40}
 .fab:hover{background:var(--mpd);box-shadow:0 6px 20px rgba(92,33,145,.5);transform:translateY(-1px)}
 /* Overlay & Toast */
@@ -159,7 +158,6 @@ mark{background:#FFF3A3;border-radius:2px;padding:0 1px;color:inherit}
 <div class="ov" id="ov"><div class="sp"></div><div class="sp-t" id="ov-t">Loading...</div></div>
 <div class="toast" id="toast"></div>
 
-<!-- Suggest a Grant Modal -->
 <div class="modal-bg" id="suggestModal" onclick="if(event.target===this)closeSuggest()">
   <div class="modal">
     <div class="modal-hdr">
@@ -168,36 +166,12 @@ mark{background:#FFF3A3;border-radius:2px;padding:0 1px;color:inherit}
     </div>
     <div class="modal-body">
       <p style="font-size:12px;color:#6D6E71;margin-bottom:16px;line-height:1.6">Know of a grant that should be in this directory? Share it with the MANSO team and we&#8217;ll review it for inclusion.</p>
-      <div class="form-row">
-        <label>Funder / Organization Name *</label>
-        <input id="sName" type="text" placeholder="e.g. The Winnipeg Foundation">
-      </div>
-      <div class="form-row">
-        <label>Website / Application URL</label>
-        <input id="sUrl" type="url" placeholder="https://...">
-      </div>
-      <div class="form-row">
-        <label>Region</label>
-        <select id="sRegion">
-          <option value="">Select region...</option>
-          <option value="Rural Manitoba">Rural Manitoba</option>
-          <option value="Winnipeg">Winnipeg</option>
-          <option value="Manitoba">Manitoba-Wide</option>
-          <option value="Canada">National / Canada</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label>Category</label>
-        <select id="sCat"><option value="">Select category...</option></select>
-      </div>
-      <div class="form-row">
-        <label>Notes / Description</label>
-        <textarea id="sNotes" placeholder="Brief description, eligibility notes, deadline info..."></textarea>
-      </div>
-      <div class="form-row">
-        <label>Your Name / Organization (optional)</label>
-        <input id="sFrom" type="text" placeholder="So we can follow up if needed">
-      </div>
+      <div class="form-row"><label>Funder / Organization Name *</label><input id="sName" type="text" placeholder="e.g. The Winnipeg Foundation"></div>
+      <div class="form-row"><label>Website / Application URL</label><input id="sUrl" type="url" placeholder="https://..."></div>
+      <div class="form-row"><label>Region</label><select id="sRegion"><option value="">Select region...</option><option>Rural Manitoba</option><option>Winnipeg</option><option>Manitoba</option><option>Canada</option></select></div>
+      <div class="form-row"><label>Category</label><select id="sCat"><option value="">Select category...</option></select></div>
+      <div class="form-row"><label>Notes / Description</label><textarea id="sNotes" placeholder="Brief description, eligibility notes, deadline info..."></textarea></div>
+      <div class="form-row"><label>Your Name / Organization (optional)</label><input id="sFrom" type="text" placeholder="So we can follow up if needed"></div>
       <div class="form-note">&#128394; Clicking &#8220;Send Suggestion&#8221; will open your email app with the details pre-filled, addressed to info@mansomanitoba.ca.</div>
     </div>
     <div class="modal-footer">
@@ -207,15 +181,11 @@ mark{background:#FFF3A3;border-radius:2px;padding:0 1px;color:inherit}
   </div>
 </div>
 
-<!-- Header -->
 <div class="hdr">
   <div class="hdr-top">
     <div class="hdr-brand">
-      <div style="flex-shrink:0;width:46px;height:42px"><svg viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="lpg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8B44B8"/><stop offset="100%" stop-color="#5C2191"/></linearGradient><linearGradient id="lbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#92D5EA"/><stop offset="100%" stop-color="#4DBDDE"/></linearGradient><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#BEC2C5"/><stop offset="100%" stop-color="#9EA3A6"/></linearGradient></defs><path d="M55.1,166.9 L18.6,144.1 A96,96,0,0,0,40.9,119.4 L67.4,153.2 A53,53,0,0,1,55.1,166.9Z" fill="url(#lgg)"/><path d="M68.8,152.1 L43.6,117.3 A96,96,0,0,0,76.8,101.9 L87.2,143.6 A53,53,0,0,1,68.8,152.1Z" fill="url(#lpg)"/><path d="M89.0,143.2 L80.0,101.1 A96,96,0,0,0,120.0,101.1 L111.0,143.2 A53,53,0,0,1,89.0,143.2Z" fill="url(#lbg)"/><path d="M112.8,143.6 L123.2,101.9 A96,96,0,0,0,156.4,117.3 L131.2,152.1 A53,53,0,0,1,112.8,143.6Z" fill="#F5A800"/><path d="M132.6,153.2 L159.1,119.4 A96,96,0,0,0,181.4,144.1 L144.9,166.9 A53,53,0,0,1,132.6,153.2Z" fill="url(#lgg)"/><polygon points="24,120 62,118 68,162 20,162" fill="url(#lpg)"/><polygon points="138,120 176,118 180,162 134,162" fill="#F5A800"/><polygon points="70,80 130,80 126,164 74,164" fill="url(#lbg)"/><circle cx="42" cy="97" r="22" fill="url(#lpg)"/><circle cx="158" cy="100" r="18" fill="#F5A800"/><circle cx="100" cy="48" r="27" fill="url(#lbg)"/></svg></div>
-      <div class="hdr-wm">
-        <div class="hdr-name">MANSO Grants Directory</div>
-        <div class="hdr-tag">Manitoba Association of Newcomer Serving Organizations &nbsp;&bull;&nbsp; 190 funding opportunities</div>
-      </div>
+      <div class="hdr-name"><span class="m">MANSO</span> <span class="g">Grants Directory</span></div>
+      <div class="hdr-tag">Manitoba Association of Newcomer Serving Organizations &nbsp;&bull;&nbsp; 190 funding opportunities</div>
     </div>
     <div class="hdr-btns">
       <a class="hbtn hbtn-p" href="https://docs.google.com/spreadsheets/d/1PYpkXrsZ2R6ipXU2BvzjcB8bsyeWzHIYplZHi5FE7V8/edit" target="_blank">&#9998; Edit Sheet</a>
@@ -229,28 +199,26 @@ mark{background:#FFF3A3;border-radius:2px;padding:0 1px;color:inherit}
   </div>
 </div>
 
-<!-- How to Use Guide Panel -->
 <div class="guide open" id="guidePanel">
   <div class="guide-inner">
-    <div class="guide-header">
+    <div class="guide-hdr">
       <div class="guide-title">&#8505; How to Use This Directory</div>
       <button class="guide-close" onclick="toggleGuide()">&#10005;</button>
     </div>
     <div class="guide-body">
-      <p>This free, open-access resource directory helps member organizations of MANSO discover and pursue funding opportunities. Grants are organized across four regional sections:</p>
+      <p>This free, open-access resource helps MANSO member organizations discover and pursue funding opportunities. Grants are organized across four regional sections:</p>
       <ul>
         <li><strong>Rural Manitoba</strong> &#8212; funding specific to rural and northern Manitoba communities</li>
         <li><strong>Winnipeg</strong> &#8212; grants for organizations based in or serving Winnipeg</li>
         <li><strong>Manitoba</strong> &#8212; province-wide funding open to nonprofits across Manitoba</li>
         <li><strong>Canada</strong> &#8212; national grants open to eligible organizations anywhere in Canada</li>
       </ul>
-      <p style="margin-top:8px">Within each section, grants are grouped by category. Each entry shows a description, eligibility, timeline, and a link to apply. See the <a href="https://docs.google.com/document/d/1eSJWcu4sdITuzxK0ozSYRjDQ3URPnD9Q3eaBIDs-uPE/edit?tab=t.0#bookmark=id.i3n1nzd8ybgj" target="_blank">Table of Contents</a> and <a href="https://docs.google.com/document/d/1eSJWcu4sdITuzxK0ozSYRjDQ3URPnD9Q3eaBIDs-uPE/edit?tab=t.0#bookmark=id.wrnvamy29piz" target="_blank">Category Legend</a> in the full directory document for more details.</p>
+      <p style="margin-top:8px">Within each section, grants are grouped by category. Each entry shows a description, eligibility, timeline, and a link to apply. See the <a href="https://docs.google.com/document/d/1eSJWcu4sdITuzxK0ozSYRjDQ3URPnD9Q3eaBIDs-uPE/edit?tab=t.0#bookmark=id.i3n1nzd8ybgj" target="_blank">Table of Contents</a> and <a href="https://docs.google.com/document/d/1eSJWcu4sdITuzxK0ozSYRjDQ3URPnD9Q3eaBIDs-uPE/edit?tab=t.0#bookmark=id.wrnvamy29piz" target="_blank">Category Legend</a> in the full directory document.</p>
     </div>
   </div>
 </div>
 <div class="guide-toggle hidden" id="guideToggle" onclick="toggleGuide()">&#8505; How to Use This Directory</div>
 
-<!-- Filters -->
 <div class="filters">
   <div class="fblock"><span class="fl">Region</span><div class="chips" id="rChips"></div></div>
   <div class="fblock"><span class="fl">Category</span><div class="chips" id="cChips"></div></div>
@@ -258,12 +226,7 @@ mark{background:#FFF3A3;border-radius:2px;padding:0 1px;color:inherit}
     <span class="fl">Deadline</span>
     <div class="fsel-row">
       <select class="fsel" id="mSel"></select>
-      <select class="fsel" id="sSel">
-        <option value="n">Sort: A&#8211;Z</option>
-        <option value="d">Sort: Deadline</option>
-        <option value="c">Sort: Category</option>
-        <option value="r">Sort: Region</option>
-      </select>
+      <select class="fsel" id="sSel"><option value="n">Sort: A&#8211;Z</option><option value="d">Sort: Deadline</option><option value="c">Sort: Category</option><option value="r">Sort: Region</option></select>
     </div>
   </div>
 </div>
@@ -280,7 +243,6 @@ mark{background:#FFF3A3;border-radius:2px;padding:0 1px;color:inherit}
 <div class="grid" id="grid"></div>
 <div class="pager bot" id="pBot"></div>
 
-<!-- Suggest a Grant FAB -->
 <button class="fab" onclick="openSuggest()">&#10010; Suggest a Grant</button>
 
 <script>
@@ -295,41 +257,16 @@ var PER=20;
 var allG=[],filtered=[],filt={q:'',regs:{},cats:{},mon:''},opened={},pg=1;
 
 function showErr(e){var el=document.getElementById('err');el.style.display='block';el.textContent='Error: '+String(e);}
-
-// Guide panel
-function toggleGuide(){
-  var g=document.getElementById('guidePanel'),t=document.getElementById('guideToggle');
-  var isOpen=g.classList.contains('open');
-  g.className='guide '+(isOpen?'hidden':'open');
-  t.className='guide-toggle '+(isOpen?'':'hidden');
-}
-
-// Suggest modal
+function toggleGuide(){var g=document.getElementById('guidePanel'),t=document.getElementById('guideToggle');var isOpen=g.classList.contains('open');g.className='guide '+(isOpen?'hidden':'open');t.className='guide-toggle '+(isOpen?'':'hidden');}
 function openSuggest(){document.getElementById('suggestModal').classList.add('on');}
 function closeSuggest(){document.getElementById('suggestModal').classList.remove('on');}
 function submitSuggest(){
   var name=document.getElementById('sName').value.trim();
-  var url=document.getElementById('sUrl').value.trim();
-  var region=document.getElementById('sRegion').value;
-  var cat=document.getElementById('sCat').value;
-  var notes=document.getElementById('sNotes').value.trim();
-  var from=document.getElementById('sFrom').value.trim();
   if(!name){alert('Please enter the funder name.');return;}
-  var body='Suggested Grant for MANSO Directory\n\n'
-    +'Funder/Organization: '+name+'\n'
-    +'Website: '+(url||'N/A')+'\n'
-    +'Region: '+(region||'Not specified')+'\n'
-    +'Category: '+(cat||'Not specified')+'\n'
-    +'Notes: '+(notes||'N/A')+'\n'
-    +'Submitted by: '+(from||'Anonymous')+'\n';
-  window.location.href='mailto:info@mansomanitoba.ca'
-    +'?subject='+encodeURIComponent('Grant Directory Suggestion: '+name)
-    +'&body='+encodeURIComponent(body);
+  var body='Suggested Grant for MANSO Directory\n\nFunder/Organization: '+name+'\nWebsite: '+(document.getElementById('sUrl').value.trim()||'N/A')+'\nRegion: '+(document.getElementById('sRegion').value||'Not specified')+'\nCategory: '+(document.getElementById('sCat').value||'Not specified')+'\nNotes: '+(document.getElementById('sNotes').value.trim()||'N/A')+'\nSubmitted by: '+(document.getElementById('sFrom').value.trim()||'Anonymous')+'\n';
+  window.location.href='mailto:info@mansomanitoba.ca?subject='+encodeURIComponent('Grant Directory Suggestion: '+name)+'&body='+encodeURIComponent(body);
   closeSuggest();
-  document.getElementById('sName').value='';
-  document.getElementById('sUrl').value='';
-  document.getElementById('sNotes').value='';
-  document.getElementById('sFrom').value='';
+  ['sName','sUrl','sNotes','sFrom'].forEach(function(id){document.getElementById(id).value='';});
   showToast('Thanks! Your suggestion has been prepared.');
 }
 
@@ -338,7 +275,6 @@ function init(){
   for(var i=0;i<SHEETS.length;i++){var sh=SHEETS[i],rows=DATA[sh]||[];for(var j=0;j<rows.length;j++){var g=rows[j];g.region=sh;g.rl=RLBL[sh];allG.push(g);}}
   buildFilters();go();
 }
-
 function buildFilters(){
   var rc=document.getElementById('rChips');rc.innerHTML='';rc.appendChild(mkChip('All','__all__','r',true));
   for(var i=0;i<SHEETS.length;i++)rc.appendChild(mkChip(RLBL[SHEETS[i]],SHEETS[i],'r',false));
@@ -349,106 +285,30 @@ function buildFilters(){
   for(var i=0;i<MONTHS.length;i++){var o=document.createElement('option');o.value=MONTHS[i];o.textContent=MONTHS[i];ms.appendChild(o);}
   ms.onchange=reset;document.getElementById('sSel').onchange=reset;
   document.getElementById('q').oninput=function(){filt.q=this.value.toLowerCase().trim();document.getElementById('sx').style.display=this.value?'block':'none';reset();};
-  // Populate suggest form categories
   var sc=document.getElementById('sCat');
   for(var i=0;i<cats.length;i++){var o=document.createElement('option');o.value=cats[i];o.textContent=cats[i];sc.appendChild(o);}
 }
-
 function mkChip(label,val,type,active){var c=document.createElement('span');c.className='chip'+(active?' on':'');c.textContent=label;c.dataset.val=val;c.onclick=function(){toggleChip(type,val,c);};return c;}
-function toggleChip(type,val,el){
-  var cont=document.getElementById(type==='r'?'rChips':'cChips'),set=type==='r'?filt.regs:filt.cats,allEl=cont.querySelector('[data-val="__all__"]');
-  if(val==='__all__'){for(var k in set)delete set[k];cont.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});allEl.classList.add('on');}
-  else{allEl.classList.remove('on');if(set[val]){delete set[val];el.classList.remove('on');if(!Object.keys(set).length)allEl.classList.add('on');}else{set[val]=1;el.classList.add('on');}}
-  reset();
-}
+function toggleChip(type,val,el){var cont=document.getElementById(type==='r'?'rChips':'cChips'),set=type==='r'?filt.regs:filt.cats,allEl=cont.querySelector('[data-val="__all__"]');if(val==='__all__'){for(var k in set)delete set[k];cont.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});allEl.classList.add('on');}else{allEl.classList.remove('on');if(set[val]){delete set[val];el.classList.remove('on');if(!Object.keys(set).length)allEl.classList.add('on');}else{set[val]=1;el.classList.add('on');}}reset();}
 function clrQ(){document.getElementById('q').value='';filt.q='';document.getElementById('sx').style.display='none';reset();}
 function clrAll(){clrQ();filt.regs={};filt.cats={};filt.mon='';document.getElementById('mSel').value='';document.querySelectorAll('.chip.on').forEach(function(c){c.classList.remove('on');});document.querySelectorAll('[data-val="__all__"]').forEach(function(c){c.classList.add('on');});reset();}
 function collapseAll(){opened={};document.querySelectorAll('.card.open').forEach(function(c){c.classList.remove('open');});}
 function moIdx(d){for(var i=0;i<MO.length;i++)if(d&&d.indexOf(MO[i])>=0)return i;return 99;}
-
-function getFiltered(){
-  filt.mon=document.getElementById('mSel').value;
-  var hr=Object.keys(filt.regs).length>0,hc=Object.keys(filt.cats).length>0,hm=filt.mon,q=filt.q,out=[];
-  for(var i=0;i<allG.length;i++){
-    var g=allG[i];
-    if(hr&&!filt.regs[g.region])continue;if(hc&&!filt.cats[g.c])continue;
-    if(hm){if(hm==='Year-round'){var dl=(g.d||'').toLowerCase();if(dl.indexOf('round')<0&&dl.indexOf('year')<0)continue;}else{if(!g.d||g.d.indexOf(hm)<0)continue;}}
-    if(q){var blob=[g.n,g.m,g.e,g.t,g.c,g.rl,g.d,g.h,g.a].join(' ').toLowerCase(),ok=true,words=q.split(/\s+/);for(var w=0;w<words.length;w++)if(blob.indexOf(words[w])<0){ok=false;break;}if(!ok)continue;}
-    out.push(g);
-  }
-  var by=document.getElementById('sSel').value;
-  out.sort(function(a,b){if(by==='n')return a.n.localeCompare(b.n);if(by==='c')return a.c.localeCompare(b.c)||a.n.localeCompare(b.n);if(by==='r')return a.region.localeCompare(b.region)||a.n.localeCompare(b.n);if(by==='d')return moIdx(a.d)-moIdx(b.d)||a.n.localeCompare(b.n);return 0;});
-  return out;
-}
-
+function getFiltered(){filt.mon=document.getElementById('mSel').value;var hr=Object.keys(filt.regs).length>0,hc=Object.keys(filt.cats).length>0,hm=filt.mon,q=filt.q,out=[];for(var i=0;i<allG.length;i++){var g=allG[i];if(hr&&!filt.regs[g.region])continue;if(hc&&!filt.cats[g.c])continue;if(hm){if(hm==='Year-round'){var dl=(g.d||'').toLowerCase();if(dl.indexOf('round')<0&&dl.indexOf('year')<0)continue;}else{if(!g.d||g.d.indexOf(hm)<0)continue;}}if(q){var blob=[g.n,g.m,g.e,g.t,g.c,g.rl,g.d,g.h,g.a].join(' ').toLowerCase(),ok=true,words=q.split(/\s+/);for(var w=0;w<words.length;w++)if(blob.indexOf(words[w])<0){ok=false;break;}if(!ok)continue;}out.push(g);}var by=document.getElementById('sSel').value;out.sort(function(a,b){if(by==='n')return a.n.localeCompare(b.n);if(by==='c')return a.c.localeCompare(b.c)||a.n.localeCompare(b.n);if(by==='r')return a.region.localeCompare(b.region)||a.n.localeCompare(b.n);if(by==='d')return moIdx(a.d)-moIdx(b.d)||a.n.localeCompare(b.n);return 0;});return out;}
 function esc(s){return(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function hl(t,q){if(!q||!t)return esc(t||'');var s=esc(t),words=q.trim().split(/\s+/);for(var i=0;i<words.length;i++){var w=words[i].replace(/[.*+?^${}()|[\]\\]/g,'\\$&');s=s.replace(new RegExp('('+w+')','gi'),'<mark>$1</mark>');}return s;}
-
-function cardHtml(g,id,isOpen,q){
-  var cls='card'+(isOpen?' open':'');
-  var yr=g.d&&(g.d.toLowerCase().indexOf('round')>=0||g.d.toLowerCase().indexOf('year')>=0);
-  var dlTag=g.d?'<span class="tag '+(yr?'tag-y':'tag-d')+'">&#128197; '+esc(g.d)+'</span>':'';
-  var body='';
-  if(g.m)body+='<div class="field"><div class="fld-lbl">Description</div><div class="fld-val">'+hl(g.m,q)+'</div></div>';
-  if(g.e)body+='<div class="field"><div class="fld-lbl">Eligibility</div><div class="fld-val">'+hl(g.e,q)+'</div></div>';
-  if(g.t)body+='<div class="field"><div class="fld-lbl">Timeline</div><div class="fld-val">'+hl(g.t,q)+'</div></div>';
-  if(g.a)body+='<div class="field"><div class="fld-lbl">Additional Info</div><div class="fld-val">'+hl(g.a,q)+'</div></div>';
-  if(g.u)body+='<a class="apply-btn" href="'+esc(g.u)+'" target="_blank" onclick="event.stopPropagation()">Apply / Learn More &#8599;</a>';
-  else if(g.h)body+='<div class="howto">'+hl(g.h,q)+'</div>';
-  return '<div class="'+cls+'" id="'+id+'" onclick="tog(\''+id+'\')">'
-    +'<div class="card-h"><div class="card-tw"><div class="card-name">'+hl(g.n,q)+'</div>'
-    +'<div class="tags"><span class="tag tag-r">'+esc(g.rl)+'</span><span class="tag tag-c">'+esc(g.c)+'</span>'+dlTag+'</div>'
-    +'</div><div class="card-toggle"><span class="tog-ico">&#9662;</span></div></div>'
-    +'<div class="card-det">'+body+'</div></div>';
-}
-
+function cardHtml(g,id,isOpen,q){var cls='card'+(isOpen?' open':'');var yr=g.d&&(g.d.toLowerCase().indexOf('round')>=0||g.d.toLowerCase().indexOf('year')>=0);var dlTag=g.d?'<span class="tag '+(yr?'tag-y':'tag-d')+'">&#128197; '+esc(g.d)+'</span>':'';var body='';if(g.m)body+='<div class="field"><div class="fld-lbl">Description</div><div class="fld-val">'+hl(g.m,q)+'</div></div>';if(g.e)body+='<div class="field"><div class="fld-lbl">Eligibility</div><div class="fld-val">'+hl(g.e,q)+'</div></div>';if(g.t)body+='<div class="field"><div class="fld-lbl">Timeline</div><div class="fld-val">'+hl(g.t,q)+'</div></div>';if(g.a)body+='<div class="field"><div class="fld-lbl">Additional Info</div><div class="fld-val">'+hl(g.a,q)+'</div></div>';if(g.u)body+='<a class="apply-btn" href="'+esc(g.u)+'" target="_blank" onclick="event.stopPropagation()">Apply / Learn More &#8599;</a>';else if(g.h)body+='<div class="howto">'+hl(g.h,q)+'</div>';return '<div class="'+cls+'" id="'+id+'" onclick="tog(\''+id+'\')">'+'<div class="card-h"><div class="card-tw"><div class="card-name">'+hl(g.n,q)+'</div>'+'<div class="tags"><span class="tag tag-r">'+esc(g.rl)+'</span><span class="tag tag-c">'+esc(g.c)+'</span>'+dlTag+'</div>'+'</div><div class="card-toggle"><span class="tog-ico">&#9662;</span></div></div>'+'<div class="card-det">'+body+'</div></div>';}
 function reset(){pg=1;go();}
-function go(){
-  filtered=getFiltered();
-  var total=filtered.length,pages=Math.max(1,Math.ceil(total/PER));
-  if(pg>pages)pg=pages;
-  var s=(pg-1)*PER,e=Math.min(s+PER,total),slice=filtered.slice(s,e),q=filt.q;
-  var hasF=filt.q||Object.keys(filt.regs).length||Object.keys(filt.cats).length||filt.mon;
-  document.getElementById('cnt').textContent=total;
-  document.getElementById('clrb').className='clrb'+(hasF?' on':'');
-  var ph=pHtml(pg,pages,total,s,e);
-  document.getElementById('pTop').innerHTML=ph;document.getElementById('pBot').innerHTML=ph;
-  wirePager(pages);
-  var grid=document.getElementById('grid');
-  if(!slice.length){grid.innerHTML='<div class="empty"><div class="empty-ico">&#128269;</div><div class="empty-t">No grants found</div><div class="empty-s">Try different search terms or adjust your filters</div><button class="empty-btn" onclick="clrAll()">&#10005; Clear all filters</button></div>';return;}
-  var parts=[];for(var i=0;i<slice.length;i++)parts.push(cardHtml(slice[i],'g'+(s+i),!!opened['g'+(s+i)],q));
-  grid.innerHTML=parts.join('');
-}
-
-function pHtml(cur,pages,total,s,e){
-  if(total===0)return '';
-  var info='<div class="pg-info">Showing <strong>'+(s+1)+'&#8211;'+e+'</strong> of <strong>'+total+'</strong> grants</div>';
-  var shown=[];if(pages<=7){for(var i=1;i<=pages;i++)shown.push(i);}else{shown=[1];if(cur>3)shown.push('...');for(var i=Math.max(2,cur-1);i<=Math.min(pages-1,cur+1);i++)shown.push(i);if(cur<pages-2)shown.push('...');shown.push(pages);}
-  var nums='';for(var i=0;i<shown.length;i++){var p=shown[i];if(p==='...')nums+='<span class="pg-dots">&#8230;</span>';else nums+='<span class="pg-n'+(p===cur?' on':'')+'" data-pg="'+p+'">'+p+'</span>';}
-  return info+'<div class="pg-nav"><button class="pg-btn" id="pgPrev" '+(cur<=1?'disabled':'')+'>&larr; Prev</button><span class="pg-sep"></span>'+nums+'<span class="pg-sep"></span><button class="pg-btn" id="pgNext" '+(cur>=pages?'disabled':'')+'>Next &rarr;</button></div>';
-}
-function wirePager(pages){
-  document.querySelectorAll('#pgPrev').forEach(function(b){b.onclick=function(){if(pg>1){pg--;go();up();}};});
-  document.querySelectorAll('#pgNext').forEach(function(b){b.onclick=function(){if(pg<pages){pg++;go();up();}};});
-  document.querySelectorAll('.pg-n').forEach(function(el){el.onclick=function(){var p=parseInt(this.dataset.pg);if(p!==pg){pg=p;go();up();}};});
-}
+function go(){filtered=getFiltered();var total=filtered.length,pages=Math.max(1,Math.ceil(total/PER));if(pg>pages)pg=pages;var s=(pg-1)*PER,e=Math.min(s+PER,total),slice=filtered.slice(s,e),q=filt.q;var hasF=filt.q||Object.keys(filt.regs).length||Object.keys(filt.cats).length||filt.mon;document.getElementById('cnt').textContent=total;document.getElementById('clrb').className='clrb'+(hasF?' on':'');var ph=pHtml(pg,pages,total,s,e);document.getElementById('pTop').innerHTML=ph;document.getElementById('pBot').innerHTML=ph;wirePager(pages);var grid=document.getElementById('grid');if(!slice.length){grid.innerHTML='<div class="empty"><div class="empty-ico">&#128269;</div><div class="empty-t">No grants found</div><div class="empty-s">Try different search terms or adjust your filters</div><button class="empty-btn" onclick="clrAll()">&#10005; Clear all filters</button></div>';return;}var parts=[];for(var i=0;i<slice.length;i++)parts.push(cardHtml(slice[i],'g'+(s+i),!!opened['g'+(s+i)],q));grid.innerHTML=parts.join('');}
+function pHtml(cur,pages,total,s,e){if(total===0)return '';var info='<div class="pg-info">Showing <strong>'+(s+1)+'&#8211;'+e+'</strong> of <strong>'+total+'</strong> grants</div>';var shown=[];if(pages<=7){for(var i=1;i<=pages;i++)shown.push(i);}else{shown=[1];if(cur>3)shown.push('...');for(var i=Math.max(2,cur-1);i<=Math.min(pages-1,cur+1);i++)shown.push(i);if(cur<pages-2)shown.push('...');shown.push(pages);}var nums='';for(var i=0;i<shown.length;i++){var p=shown[i];if(p==='...')nums+='<span class="pg-dots">&#8230;</span>';else nums+='<span class="pg-n'+(p===cur?' on':'')+'" data-pg="'+p+'">'+p+'</span>';}return info+'<div class="pg-nav"><button class="pg-btn" id="pgPrev" '+(cur<=1?'disabled':'')+'>&larr; Prev</button><span class="pg-sep"></span>'+nums+'<span class="pg-sep"></span><button class="pg-btn" id="pgNext" '+(cur>=pages?'disabled':'')+'>Next &rarr;</button></div>';}
+function wirePager(pages){document.querySelectorAll('#pgPrev').forEach(function(b){b.onclick=function(){if(pg>1){pg--;go();up();}};});document.querySelectorAll('#pgNext').forEach(function(b){b.onclick=function(){if(pg<pages){pg++;go();up();}};});document.querySelectorAll('.pg-n').forEach(function(el){el.onclick=function(){var p=parseInt(this.dataset.pg);if(p!==pg){pg=p;go();up();}};});}
 function up(){document.getElementById('pTop').scrollIntoView({behavior:'smooth',block:'nearest'});}
 function tog(id){var el=document.getElementById(id);if(!el)return;if(opened[id]){delete opened[id];el.classList.remove('open');}else{opened[id]=1;el.classList.add('open');}}
-
-function doSync(){
-  if(typeof window.cowork==='undefined'){showToast('Sync is available inside Cowork only');return;}
-  var btn=document.getElementById('syncBtn');btn.disabled=true;showOv('Connecting to Google Sheets…');
-  window.cowork.callMcpTool('mcp__76168948-42cb-4448-9a8e-24e832e58f20__download_file_content',{fileId:GS_ID,exportMimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
-  .then(function(res){if(!res||!res.content)throw new Error('No data');setOv('Parsing…');return parseXLSX(res.content);})
-  .then(function(sheets){var fresh={};for(var i=0;i<SHEETS.length;i++){var s=SHEETS[i];if(sheets[s])fresh[s]=sheetToGrants(sheets[s]);}for(var k in fresh)DATA[k]=fresh[k];allG=[];for(var i=0;i<SHEETS.length;i++){var sh=SHEETS[i],rows=DATA[sh]||[];for(var j=0;j<rows.length;j++){var g=rows[j];g.region=sh;g.rl=RLBL[sh];allG.push(g);}}hideOv();showToast('✅ Synced — '+allG.length+' grants loaded');buildFilters();reset();})
-  .catch(function(e){hideOv();showToast('⚠️ Sync failed: '+e.message);}).finally(function(){btn.disabled=false;});
-}
-
+function doSync(){if(typeof window.cowork==='undefined'){showToast('Sync is available inside Cowork only');return;}var btn=document.getElementById('syncBtn');btn.disabled=true;showOv('Connecting to Google Sheets…');window.cowork.callMcpTool('mcp__76168948-42cb-4448-9a8e-24e832e58f20__download_file_content',{fileId:GS_ID,exportMimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}).then(function(res){if(!res||!res.content)throw new Error('No data');setOv('Parsing…');return parseXLSX(res.content);}).then(function(sheets){var fresh={};for(var i=0;i<SHEETS.length;i++){var s=SHEETS[i];if(sheets[s])fresh[s]=sheetToGrants(sheets[s]);}for(var k in fresh)DATA[k]=fresh[k];allG=[];for(var i=0;i<SHEETS.length;i++){var sh=SHEETS[i],rows=DATA[sh]||[];for(var j=0;j<rows.length;j++){var g=rows[j];g.region=sh;g.rl=RLBL[sh];allG.push(g);}}hideOv();showToast('✅ Synced — '+allG.length+' grants loaded');buildFilters();reset();}).catch(function(e){hideOv();showToast('⚠️ Sync failed: '+e.message);}).finally(function(){btn.disabled=false;});}
 function parseXLSX(b64){var bin=atob(b64),bytes=new Uint8Array(bin.length);for(var i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return unzip(bytes).then(function(files){var ss=[];if(files['xl/sharedStrings.xml']){var doc=new DOMParser().parseFromString(files['xl/sharedStrings.xml'],'text/xml');doc.querySelectorAll('si').forEach(function(si){var t='';si.querySelectorAll('t').forEach(function(n){t+=n.textContent;});ss.push(t);});}var wb=new DOMParser().parseFromString(files['xl/workbook.xml']||'<w/>','text/xml');var rDoc=new DOMParser().parseFromString(files['xl/_rels/workbook.xml.rels']||'<r/>','text/xml');var rm={};rDoc.querySelectorAll('Relationship').forEach(function(r){rm[r.getAttribute('Id')]=r.getAttribute('Target');});var out={};wb.querySelectorAll('sheet').forEach(function(s){var nm=s.getAttribute('name'),tgt=rm[s.getAttribute('r:id')]||'',path=tgt.indexOf('/xl/')===0?tgt.slice(1):'xl/'+tgt;if(files[path])out[nm]=parseSheetXML(files[path],ss);});return out;});}
 function unzip(bytes){return new Promise(function(resolve,reject){try{var view=new DataView(bytes.buffer),eocd=-1;for(var i=bytes.length-22;i>=Math.max(0,bytes.length-65558);i--){if(view.getUint32(i,true)===0x06054b50){eocd=i;break;}}if(eocd<0){reject(new Error('Not a ZIP'));return;}var cdOff=view.getUint32(eocd+16,true),files={},promises=[],off=cdOff;while(off+46<eocd){if(view.getUint32(off,true)!==0x02014b50)break;var method=view.getUint16(off+10,true),csize=view.getUint32(off+20,true),fnLen=view.getUint16(off+28,true),xLen=view.getUint16(off+30,true),cmLen=view.getUint16(off+32,true),lhOff=view.getUint32(off+42,true),name=new TextDecoder().decode(bytes.subarray(off+46,off+46+fnLen));off+=46+fnLen+xLen+cmLen;var lhFnL=view.getUint16(lhOff+26,true),lhXL=view.getUint16(lhOff+28,true),dOff=lhOff+30+lhFnL+lhXL,raw=bytes.subarray(dOff,dOff+csize);(function(n,m,r){if(m===0){files[n]=new TextDecoder().decode(r);}else if(m===8){var ds=new DecompressionStream('deflate-raw'),w=ds.writable.getWriter();w.write(r);w.close();var chunks=[],reader=ds.readable.getReader();promises.push((function rd(){return reader.read().then(function(res){if(!res.done){chunks.push(res.value);return rd();}var out=new Uint8Array(chunks.reduce(function(a,c){return a+c.length;},0)),p=0;for(var i=0;i<chunks.length;i++){out.set(chunks[i],p);p+=chunks[i].length;}files[n]=new TextDecoder().decode(out);})})().catch(function(){}));}})(name,method,raw);}Promise.all(promises).then(function(){resolve(files);});}catch(e){reject(e);}});}
 function parseSheetXML(xml,ss){var doc=new DOMParser().parseFromString(xml,'text/xml'),out=[];doc.querySelectorAll('row').forEach(function(row){var cells={};row.querySelectorAll('c').forEach(function(c){var ref=c.getAttribute('r')||'',col=ref.replace(/\d/g,''),type=c.getAttribute('t'),v=c.querySelector('v');if(type==='s'&&v)cells[col]=ss[parseInt(v.textContent)]||'';else if(type==='inlineStr'){var t='';c.querySelectorAll('t').forEach(function(n){t+=n.textContent;});cells[col]=t;}else if(v)cells[col]=v.textContent;});if(Object.keys(cells).length)out.push(cells);});return out;}
 function sheetToGrants(rows){var isURL=function(s){return s&&(s.indexOf('http://')==0||s.indexOf('https://')==0);};var nc=function(c){var m={'community':'Community Wide','community wide':'Community Wide','community ':'Community Wide','inidgenous':'Indigenous','enivromental':'Environmental'};return m[(c||'Other').trim().toLowerCase()]||(c||'Other').trim();};var nd=function(d){var m={'janurary':'January','year-around':'Year-round','year-round':'Year-round'};return m[(d||'').trim().toLowerCase()]||(d||'').trim();};var out=[];for(var i=2;i<rows.length;i++){var r=rows[i],n=(r['A']||'').trim();if(!n||n.toLowerCase().indexOf('funder')>=0)continue;var src=(r['H']||'').trim();out.push({n:n,m:(r['B']||'').trim(),e:(r['D']||'').trim(),t:(r['E']||'').trim(),d:nd(r['F']),h:(r['G']||'').trim(),u:isURL(src)?src:'',a:(r['I']||'').trim(),c:nc(r['J'])});}return out;}
-
 function showOv(t){document.getElementById('ov-t').textContent=t;document.getElementById('ov').classList.add('on');}
 function setOv(t){document.getElementById('ov-t').textContent=t;}
 function hideOv(){document.getElementById('ov').classList.remove('on');}
