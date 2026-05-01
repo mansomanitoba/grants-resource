@@ -233,8 +233,6 @@ function buildFilters(){
   for(var i=0;i<MONTHS.length;i++){var o=document.createElement('option');o.value=MONTHS[i];o.textContent=MONTHS[i];ms.appendChild(o);}
   ms.onchange=reset;document.getElementById('sSel').onchange=reset;
   document.getElementById('q').oninput=function(){filt.q=this.value.toLowerCase().trim();document.getElementById('sx').style.display=this.value?'block':'none';reset();};
-  var sc=document.getElementById('sCat');
-  for(var i=0;i<cats.length;i++){var o=document.createElement('option');o.value=cats[i];o.textContent=cats[i];sc.appendChild(o);}
 }
 function mkChip(label,val,type,active){var c=document.createElement('span');c.className='chip'+(active?' on':'');c.textContent=label;c.dataset.val=val;c.onclick=function(){toggleChip(type,val,c);};return c;}
 function toggleChip(type,val,el){var cont=document.getElementById(type==='r'?'rChips':'cChips'),set=type==='r'?filt.regs:filt.cats,allEl=cont.querySelector('[data-val="__all__"]');if(val==='__all__'){for(var k in set)delete set[k];cont.querySelectorAll('.chip').forEach(function(c){c.classList.remove('on');});allEl.classList.add('on');}else{allEl.classList.remove('on');if(set[val]){delete set[val];el.classList.remove('on');if(!Object.keys(set).length)allEl.classList.add('on');}else{set[val]=1;el.classList.add('on');}}reset();}
